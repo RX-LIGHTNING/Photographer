@@ -13,11 +13,20 @@ public class PhotoController {
     PhotoRepo photoRepo;
     @GetMapping("/photos")
     Iterable<Photo> getPhotos(){
-        System.out.println(2);
         return photoRepo.findAll();
     }
-    @PostMapping("/photo/add")
+    @GetMapping("/photos/")
+    Photo getPhoto(@RequestParam Long id) {
+        return photoRepo.findById(id).get();
+    }
+    @PostMapping("/photos")
     Photo putPhoto(@RequestBody Photo photo){
         return photoRepo.save(photo);
     }
+    @DeleteMapping( "/photos")
+    void deletePhoto(@RequestParam Long id){
+        System.out.println(1);
+        photoRepo.deleteById(id);
+    }
+
 }
