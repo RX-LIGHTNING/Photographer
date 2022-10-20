@@ -9,7 +9,7 @@ public class Photo {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-    @OneToOne
+    @ManyToOne
     private Album album;
     public Long getId() {
         return id;

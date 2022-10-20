@@ -11,8 +11,9 @@ public class Album {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @OneToMany(targetEntity = Photo.class, fetch = FetchType.EAGER)
-    private List<Photo> photos;
+
+    @OneToMany(mappedBy="album", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Photo> photos = new ArrayList<>();
 
     public void setId(Long id) {
         this.id = id;
@@ -28,5 +29,8 @@ public class Album {
 
     public void setPhotos(List<Photo> photos) {
         this.photos = photos;
+    }
+    public Album(){
+        
     }
 }
