@@ -1,9 +1,6 @@
 package com.photo.photographer.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 
 @Entity
@@ -12,6 +9,8 @@ public class Photo {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
+    @OneToOne
+    private Album album;
     public Long getId() {
         return id;
     }
@@ -26,5 +25,16 @@ public class Photo {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Album getAlbum() {
+        return album;
+    }
+
+    public void setAlbum(Album album) {
+        this.album = album;
+    }
+    public Photo(){
+
     }
 }
